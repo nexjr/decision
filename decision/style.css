@@ -1,0 +1,237 @@
+/* --- ESTILOS GERAIS E RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Garante que padding e border não alterem o tamanho final do elemento */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Fonte moderna e limpa */
+    background-color: #f0f2f5; /* Um cinza bem claro para o fundo */
+    color: #333;
+    display: flex;
+    flex-direction: column; /* Organiza o layout em coluna (header, main, footer) */
+    min-height: 100vh; /* Garante que o corpo ocupe no mínimo 100% da altura da tela */
+}
+
+/* --- CABEÇALHO E NAVEGAÇÃO --- */
+header {
+    background-color: #ffffff;
+    padding: 1rem 5%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidade */
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Coloca o logo de um lado e os links do outro */
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700; /* Negrito */
+    color: #007bff; /* Um azul para destacar a marca */
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none; /* Remove as bolinhas da lista */
+    display: flex;
+    gap: 1.5rem; /* Espaçamento entre os itens do menu */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    transition: color 0.3s ease; /* Transição suave da cor ao passar o mouse */
+}
+
+nav ul li a:hover {
+    color: #007bff; /* Muda a cor ao passar o mouse */
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+main {
+    flex: 1; /* Faz o main ocupar todo o espaço disponível entre o header e o footer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.decision-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem; /* Espaço entre a bola de resultado e o botão */
+}
+
+/* --- A BOLA DE RESULTADO --- */
+.result-circle {
+    width: 280px;
+    height: 280px;
+    background-color: #ffffff;
+    border-radius: 50%; /* Isso transforma o div em um círculo perfeito */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid #e9ecef; /* Borda cinza clara */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0,0,0,0.05); /* Sombra interna e externa para dar um efeito 3D sutil */
+    transition: transform 0.5s ease; /* Animação suave para quando o resultado aparecer */
+}
+
+#result-text {
+    font-size: 5rem; /* Tamanho grande para o Sim/Não */
+    font-weight: 700;
+    color: #495057;
+}
+
+/* --- BOTÃO DE AÇÃO --- */
+#action-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff; /* Azul primário, chamando para a ação */
+    border: none;
+    border-radius: 50px; /* Bordas bem arredondadas, formato de pílula */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+#action-button:hover {
+    background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+    transform: translateY(-3px); /* Leve elevação ao passar o mouse */
+}
+
+#action-button:active {
+    transform: translateY(1px); /* Efeito de clique */
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+/* --- RODAPÉ --- */
+footer {
+    background-color: #343a40; /* Cinza escuro */
+    color: #f8f9fa; /* Branco */
+    text-align: center;
+    padding: 1.5rem 0;
+    width: 100%;
+}
+
+/* --- AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) --- */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    nav ul {
+        gap: 1rem;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+    }
+
+    .result-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    #result-text {
+        font-size: 4rem;
+    }
+
+    #action-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* --- ANIMAÇÃO PARA O JS --- */
+.spinning {
+    animation: spin 0.4s ease-in-out; /* <-- MUDANÇA: De 1s para 0.4s */
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- NOVAS CLASSES DE COR PARA O RESULTADO --- */
+.cor-sim {
+    border-color: #28a745; /* Verde para "Sim" */
+}
+
+.cor-nao {
+    border-color: #dc3545; /* Vermelho para "Não" */
+}
+
+/* Você pode opcionalmente mudar a cor do texto também */
+.cor-sim #result-text {
+    color: #28a745;
+}
+
+.cor-nao #result-text {
+    color: #dc3545;
+}
+
+/* --- ESTILOS PARA O SELETOR DE IDIOMAS --- */
+.language-selector {
+    position: relative; /* Necessário para posicionar o dropdown */
+    display: inline-block;
+}
+
+#lang-btn {
+    background-color: #e9ecef;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lang-dropdown {
+    display: none; /* Começa escondido */
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    min-width: 160px;
+    z-index: 10;
+    overflow: hidden; /* Garante que os itens fiquem dentro das bordas arredondadas */
+}
+
+.lang-dropdown a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.lang-dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Classe que o JS vai usar para mostrar o dropdown */
+.lang-dropdown.show {
+    display: block;
+}
