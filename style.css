@@ -271,8 +271,12 @@ footer {
 }
 
 .modo-container {
-    width: 100%;
-    /* O flex:1 no main já o centraliza */
+        width: 100%;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+    
 }
 
 /* --- ESTILOS PARA O MODO NÚMERO ALEATÓRIO --- */
