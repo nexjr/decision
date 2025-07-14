@@ -351,3 +351,86 @@ footer {
 #gerar-numero-btn:hover {
     background-color: #218838;
 }
+
+/* --- ESTILOS PARA O MODO SORTEADOR DE LISTA --- */
+
+.sorteador-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Espaçamento entre os elementos */
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 450px; /* Largura máxima do card */
+    width: 90%; /* Ocupa 90% da largura em telas pequenas */
+    margin: 0 auto;
+}
+
+.sorteador-container h2 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.instrucao {
+    color: #6c757d; /* Cinza para o texto de instrução */
+    font-size: 0.9rem;
+    margin-top: -1rem; /* Puxa um pouco pra cima */
+    margin-bottom: 1rem;
+}
+
+#lista-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #ced4da; /* Borda cinza clara */
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    resize: vertical; /* Permite que o usuário aumente a altura, mas não a largura */
+    min-height: 150px;
+    transition: border-color 0.2s ease;
+}
+
+#lista-input:focus {
+    outline: none;
+    border-color: #007bff; /* Borda azul ao focar */
+}
+
+.resultado-sorteio {
+    background-color: #e9ecef;
+    width: 100%;
+    min-height: 80px; /* Altura mínima para não "pular" a tela */
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #495057;
+    text-align: center;
+    word-break: break-word; /* Quebra palavras longas para não estourar o container */
+}
+
+#sortear-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #6f42c1; /* Um roxo para diferenciar a ação */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#sortear-btn:hover {
+    background-color: #5a349c;
+    transform: translateY(-2px);
+}
+
+#sortear-btn:active {
+    transform: translateY(0);
+}

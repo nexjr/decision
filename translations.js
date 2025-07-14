@@ -1,12 +1,19 @@
 const translations = {
-    // Chaves para a Navegação e Rodapé (comuns a todas as páginas)
     logo: {
         pt: "Simple Randomizer",
         en: "Simple Randomizer"
     },
-    title: {
-        pt: "Simple Randomizer - Ferramentas de Decisão e Sorteio",
-        en: "Simple Randomizer - Decision & Random Tools"
+    title_index: {
+        pt: "Simple Randomizer | Ferramentas de Sim ou Não e Sorteio",
+        en: "Simple Randomizer | Yes or No & Random Picker Tools"
+    },
+    title_sobre: {
+        pt: "Sobre Nós | Simple Randomizer",
+        en: "About Us | Simple Randomizer"
+    },
+    title_contato: {
+        pt: "Contato | Simple Randomizer",
+        en: "Contact | Simple Randomizer"
     },
     nav_sobre: {
         pt: "Sobre",
@@ -102,6 +109,22 @@ const translations = {
     random_number_button: {
         pt: "Gerar Número",
         en: "Generate Number"
+    },
+    list_drawer: {
+        pt: "Sorteador de Lista",
+        en: "List Drawer"
+    },
+    list_picker_title: {
+        pt: "Sorteador de Lista",
+        en: "List Sorter"
+    },
+    list_picker_instruction: {
+        pt: "Digite um item por linha",
+        en: "Enter one item per line"
+    },
+    list_picker_button: {
+        pt: "Sortear itens!",
+        en: "Draw items!"
     }
 
 };

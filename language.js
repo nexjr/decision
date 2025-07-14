@@ -7,29 +7,34 @@ document.addEventListener('DOMContentLoaded', () => {
      * Função principal para traduzir a página.
      * @param {string} lang - O código do idioma a ser aplicado (ex: 'pt' ou 'en').
      */
-    const setLanguage = (lang) => {
-        // 1. Traduz todos os elementos com o atributo [data-key]
-        const elements = document.querySelectorAll('[data-key]');
-        elements.forEach(elem => {
-            const key = elem.getAttribute('data-key');
-            if (translations[key] && translations[key][lang]) {
-                // Usa innerHTML para permitir tags como <strong>
-                elem.innerHTML = translations[key][lang];
-            }
-        });
-
-        // 2. CASO ESPECIAL: Traduz o título da página (tag <title>)
-        // Verifica se existe uma chave 'title' no objeto de traduções
-        if (translations.title && translations.title[lang]) {
-            document.title = translations.title[lang];
+    // Função para traduzir a página
+const setLanguage = (lang) => {
+    // 1. Traduz todos os elementos com data-key no corpo da página
+    const elements = document.querySelectorAll('[data-key]');
+    elements.forEach(elem => {
+        const key = elem.getAttribute('data-key');
+        if (translations[key] && translations[key][lang]) {
+            elem.innerHTML = translations[key][lang];
         }
+    });
 
-        // 3. Atualiza o texto do botão principal de idioma para refletir a seleção
-        langBtn.innerHTML = lang === 'pt' ? '🇧🇷 PT-BR' : '🇺🇸 EN';
+    // MUDANÇA: LÓGICA AVANÇADA PARA O TÍTULO DA PÁGINA
+    // 2. Detecta qual página está ativa
+    const currentPage = document.documentElement.getAttribute('data-page'); // Pega o atributo da tag <html>
+    const titleKey = `title_${currentPage}`; // Cria a chave dinamicamente (ex: "title_index")
 
-        // 4. Guarda a preferência do usuário no armazenamento local do navegador
-        localStorage.setItem('language', lang);
-    };
+    // 3. Traduz o título do documento (tag <title>)
+    if (translations[titleKey] && translations[titleKey][lang]) {
+        document.title = translations[titleKey][lang];
+    }
+    // FIM DA MUDANÇA
+
+    // 4. Atualiza o texto do botão principal de idioma
+    langBtn.innerHTML = lang === 'pt' ? '🇧🇷 PT-BR' : '🇺🇸 EN';
+
+    // 5. Guarda a preferência do usuário no navegador
+    localStorage.setItem('language', lang);
+};
 
     // --- CONTROLE DO MENU DROPDOWN ---
 

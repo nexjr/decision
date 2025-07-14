@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- MODO 1: LÓGICA DO SIM OU NÃO (código que já tínhamos) ---
+    // --- LÓGICA DO SIM OU NÃO ---
     const actionButton = document.getElementById('action-button');
     const resultCircle = document.querySelector('.result-circle');
     const resultText = document.getElementById('result-text');
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 400);
     }
 
-    // --- MODO 2: LÓGICA DO NÚMERO ALEATÓRIO ---
+    // --- LÓGICA DO NÚMERO ALEATÓRIO ---
     const gerarNumeroBtn = document.getElementById('gerar-numero-btn');
     const minNumberInput = document.getElementById('min-number');
     const maxNumberInput = document.getElementById('max-number');
@@ -84,6 +84,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
             numeroResultado.textContent = randomNumber;
+        });
+    }
+
+    // --- LÓGICA DO SORTEADOR DE LISTA ---
+    
+    const sortearBtn = document.getElementById('sortear-btn');
+    const listaInput = document.getElementById('lista-input');
+    const listaResultado = document.getElementById('lista-resultado');
+
+    if (sortearBtn) {
+        sortearBtn.addEventListener('click', () => {
+            // 1. Pega o texto da textarea e o processa
+            const textoDaLista = listaInput.value;
+            
+            // Cria um array, separando por linha, e remove linhas vazias
+            const items = textoDaLista.split('\n').filter(item => item.trim() !== '');
+
+            // 2. Verifica se a lista não está vazia
+            if (items.length === 0) {
+                alert("Por favor, digite pelo menos um item na lista.");
+                return; // Para a execução da função aqui
+            }
+
+            // Desabilita o botão para evitar múltiplos cliques durante a animação
+            sortearBtn.disabled = true;
+
+            // 3. LÓGICA DA ANIMAÇÃO "ROLETA"
+            let voltas = 0;
+            const maxVoltas = items.length > 1 ? 20 : 1; // Dá pelo menos 20 "piscadas"
+            
+            const animacaoInterval = setInterval(() => {
+                // Pega um item aleatório da lista para mostrar na animação
+                const itemAleatorio = items[Math.floor(Math.random() * items.length)];
+                listaResultado.textContent = itemAleatorio;
+                voltas++;
+                if (voltas > maxVoltas) {
+                    clearInterval(animacaoInterval); // Para a animação
+                    revelarVencedor();
+                }
+            }, 100); // Muda o nome a cada 100 milissegundos
+
+            // 4. SORTEIO REAL E REVELAÇÃO DO VENCEDOR
+            const revelarVencedor = () => {
+                const indiceVencedor = Math.floor(Math.random() * items.length);
+                const vencedor = items[indiceVencedor];
+                
+                // Exibe o vencedor final
+                listaResultado.textContent = vencedor;
+                
+                // Habilita o botão novamente
+                sortearBtn.disabled = false;
+            };
         });
     }
 });

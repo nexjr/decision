@@ -1,5 +1,5 @@
     <!DOCTYPE html>
-    <html lang="pt-br">
+    <html lang="pt-br" data-page="index">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,8 @@
         <nav class="sub-nav">
             <button class="modo-btn active" data-mode="sim-nao" data-key="yes_no">Sim ou Não</button>
             <button class="modo-btn" data-mode="numero-aleatorio" data-key="random_number">Número Aleatório</button>
-            </nav>
+            <button class="modo-btn" data-mode="sorteio-lista" data-key="list_drawer">Sorteador de Lista</button>
+        </nav>
     
         <main>
             <div id="sim-nao-mode" class="modo-container">
@@ -39,6 +40,8 @@
                     <button id="action-button" data-key="main_button">Girar a Roda</button>
                 </div>
             </div>
+
+            <!--Numero Aleatorio-->
     
             <div id="numero-aleatorio-mode" class="modo-container" style="display: none;">
                 <div class="gerador-container">
@@ -55,6 +58,18 @@
                     </div>
                     <div class="resultado-numero" id="numero-resultado">?</div>
                     <button id="gerar-numero-btn" data-key="random_number_button">Gerar Número</button>
+                </div>
+            </div>
+
+            <!--Sorteador-->
+
+            <div id="sorteio-lista-mode" class="modo-container" style="display: none;">
+                <div class="sorteador-container">
+                    <h2 data-key="list_picker_title">Sorteador de Lista</h2>
+                    <p class="instrucao" data-key="list_picker_instruction">Digite um item por linha</p>
+                    <textarea id="lista-input" rows="10" placeholder="Exemplo:&#10;Ana&#10;Bruno&#10;Carlos&#10;Daniela"></textarea>
+                    <div class="resultado-sorteio" id="lista-resultado">?</div>
+                    <button id="sortear-btn" data-key="list_picker_button">Sortear!</button>
                 </div>
             </div>
         </main>
