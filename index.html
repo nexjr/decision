@@ -29,6 +29,7 @@
             <button class="modo-btn active" data-mode="sim-nao" data-key="yes_no">Sim ou Não</button>
             <button class="modo-btn" data-mode="numero-aleatorio" data-key="random_number">Número Aleatório</button>
             <button class="modo-btn" data-mode="sorteio-lista" data-key="list_drawer">Sorteador de Lista</button>
+            <button class="modo-btn" data-mode="cara-coroa" data-key="Heads_or_Tails">Cara ou Coroa</button>
         </nav>
     
         <main>
@@ -67,15 +68,34 @@
                 <div class="sorteador-container">
                     <h2 data-key="list_picker_title">Sorteador de Lista</h2>
                     <p class="instrucao" data-key="list_picker_instruction">Digite um item por linha</p>
-                    <textarea id="lista-input" rows="10" placeholder="Exemplo:&#10;Ana&#10;Bruno&#10;Carlos&#10;Daniela"></textarea>
+                    <textarea id="lista-input" rows="10" placeholder="Example:&#10;Ana&#10;Bruno&#10;Carlos&#10;Daniela" data-key="text_area"></textarea>
                     <div class="resultado-sorteio" id="lista-resultado">?</div>
                     <button id="sortear-btn" data-key="list_picker_button">Sortear!</button>
                 </div>
             </div>
+            
+            <!-- Cara ou Coroa-->
+
+            <div id="cara-coroa-mode" class="modo-container" style="display: none;">
+                <div class="coin-flip-container">
+                    <h2 data-key="coin_flip_title">Cara ou Coroa</h2>
+            
+                    <div class="coin" id="coin">
+                        <div class="side heads" data-key="coin_heads">Cara</div>
+                        <div class="side tails" data-key="coin_tails">Coroa</div>
+                    </div>
+            
+                    <h3 class="resultado-moeda" id="coin-flip-result">&nbsp;</h3>
+                    <button id="flip-button" data-key="coin_flip_button">Lançar Moeda!</button>
+                </div>
+            </div>
+            
         </main>
     
         <footer>
-            <p data-key="footer_text">&copy; 2025 Simple Randomizer. Todos os direitos reservados.</p> </footer>
+            <p data-key="footer_text">&copy; 2025 Simple Randomizer. Todos os direitos reservados.</p> 
+            <a href="privacidade.html" data-key="footer_privacy_link">Política de Privacidade</a>
+        </footer>
     
             <script src="translations.js"></script>
             <script src="language.js"></script>

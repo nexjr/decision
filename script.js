@@ -33,38 +33,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultText = document.getElementById('result-text');
     const possibleAnswers = ['Sim', 'Não'];
 
+    let rodaRotation = 0; // <<< ADICIONE ESTA LINHA
+
     if (actionButton) {
         actionButton.addEventListener('click', gerarDecisao);
     }
     
-    function gerarDecisao() {
-        actionButton.disabled = true;
-        resultCircle.classList.remove('cor-sim', 'cor-nao');
-        resultCircle.classList.add('spinning');
-        resultText.textContent = '';
-        resultText.style.color = '#495057';
+function gerarDecisao() {
+    actionButton.disabled = true;
+    resultCircle.classList.remove('cor-sim', 'cor-nao');
+    resultText.textContent = '';
+    resultText.style.color = '#495057';
 
-        setTimeout(() => {
-            const currentLang = localStorage.getItem('language') || 'pt';
-            const randomIndex = Math.floor(Math.random() * possibleAnswers.length);
-            const randomAnswerKey = possibleAnswers[randomIndex];
+    // --- NOVA LÓGICA DE ANIMAÇÃO ---
+    // Adiciona 360 graus à rotação atual para fazer a roda girar uma vez
+    rodaRotation += 360; 
+    // Aplica a rotação diretamente no estilo do elemento
+    resultCircle.style.transform = `rotate(${rodaRotation}deg)`;
+    // --- FIM DA NOVA LÓGICA ---
 
-            let translatedAnswer = '';
-            if (randomAnswerKey === 'Sim') {
-                translatedAnswer = translations.answer_yes[currentLang];
-                resultCircle.classList.add('cor-sim');
-            } else {
-                translatedAnswer = translations.answer_no[currentLang];
-                resultCircle.classList.add('cor-nao');
-            }
-            
-            resultText.textContent = translatedAnswer;
-            const buttonText = translations.button_try_again[currentLang];
-            actionButton.textContent = buttonText;
-            resultCircle.classList.remove('spinning');
-            actionButton.disabled = false;
-        }, 400);
-    }
+    setTimeout(() => {
+        const currentLang = localStorage.getItem('language') || 'pt';
+        const randomIndex = Math.floor(Math.random() * possibleAnswers.length);
+        const randomAnswerKey = possibleAnswers[randomIndex];
+
+        let translatedAnswer = '';
+        if (randomAnswerKey === 'Sim') {
+            translatedAnswer = translations.answer_yes[currentLang];
+            resultCircle.classList.add('cor-sim');
+        } else {
+            translatedAnswer = translations.answer_no[currentLang];
+            resultCircle.classList.add('cor-nao');
+        }
+        
+        resultText.textContent = translatedAnswer;
+        const buttonText = translations.button_try_again[currentLang];
+        actionButton.textContent = buttonText;
+        
+        // A linha que removia a classe .spinning não é mais necessária
+        // resultCircle.classList.remove('spinning'); // LINHA REMOVIDA
+
+        actionButton.disabled = false;
+    }, 400); // O tempo do timeout deve ser o mesmo da transição do CSS
+}
 
     // --- LÓGICA DO NÚMERO ALEATÓRIO ---
     const gerarNumeroBtn = document.getElementById('gerar-numero-btn');
@@ -138,4 +149,57 @@ document.addEventListener('DOMContentLoaded', () => {
             };
         });
     }
+
+    // --- MODO 4: LÓGICA DO CARA OU COROA ---
+const flipButton = document.getElementById('flip-button');
+const coin = document.getElementById('coin');
+const coinFlipResult = document.getElementById('coin-flip-result');
+
+// Traduções de exemplo (adicione os seus)
+const translations = {
+    coin_heads: {
+        pt: 'Cara',
+        en: 'Heads'
+    },
+    coin_tails: {
+        pt: 'Coroa',
+        en: 'Tails'
+    },
+    coin_flip_result_text: {
+        pt: 'Resultado:',
+        en: 'Result:'
+    }
+};
+
+if (flipButton) {
+    let isFlipping = false;
+    let rotation = 0;
+
+    flipButton.addEventListener('click', () => {
+        if (isFlipping) return;
+
+        isFlipping = true;
+        coinFlipResult.textContent = '\u00A0';
+
+        // Sorteia resultado
+        const result = Math.random() < 0.5 ? 'heads' : 'tails';
+        rotation += (result === 'heads') ? 1800 : 1980;
+
+        // Aplica rotação
+        coin.style.transition = 'transform 1s cubic-bezier(0.45, 0.05, 0.55, 0.95)';
+        coin.style.transform = `rotateY(${rotation}deg)`;
+
+        // Exibe resultado após a animação
+        setTimeout(() => {
+            const currentLang = localStorage.getItem('language') || 'pt';
+            const translatedSide = (result === 'heads')
+                ? translations.coin_heads[currentLang]
+                : translations.coin_tails[currentLang];
+            const resultText = translations.coin_flip_result_text[currentLang];
+
+            coinFlipResult.textContent = `${resultText} ${translatedSide}!`;
+            isFlipping = false;
+        }, 1000);
+    });
+}
 });
