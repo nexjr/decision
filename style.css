@@ -1,4 +1,4 @@
-/* --- ESTILOS GERAIS E RESET --- */
+/* ESTILOS GERAIS E RESET */
 * {
     margin: 0;
     padding: 0;
@@ -52,7 +52,7 @@ nav ul li a:hover {
     color: #007bff; /* Muda a cor ao passar o mouse */
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
+/* CONTEÚDO PRINCIPAL */
 main {
     flex: 1; /* Faz o main ocupar todo o espaço disponível entre o header e o footer */
     display: flex;
@@ -69,16 +69,16 @@ main {
     gap: 2.5rem; /* Espaço entre a bola de resultado e o botão */
 }
 
-/* --- A BOLA DE RESULTADO --- */
+/* A BOLA DE RESULTADO */
 .result-circle {
     width: 280px;
     height: 280px;
     background-color: #ffffff;
-    border-radius: 50%; /* Isso transforma o div em um círculo perfeito */
+    border-radius: 50%; 
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 10px solid #e9ecef; /* Borda cinza clara */
+    border: 10px solid #e9ecef; 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0,0,0,0.05); /* Sombra interna e externa para dar um efeito 3D sutil */
     transition: transform 0.4s ease-in-out, border-color 0.4s ease; 
 }
@@ -89,7 +89,7 @@ main {
     color: #495057;
 }
 
-/* --- BOTÃO DE AÇÃO --- */
+/* BOTÃO DE AÇÃO */
 #action-button {
     padding: 1rem 2.5rem;
     font-size: 1.2rem;
@@ -97,7 +97,7 @@ main {
     color: #fff;
     background-color: #007bff; /* Azul primário, chamando para a ação */
     border: none;
-    border-radius: 50px; /* Bordas bem arredondadas, formato de pílula */
+    border-radius: 50px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
     box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
@@ -113,34 +113,33 @@ main {
     box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
 }
 
-/* --- RODAPÉ --- */
+/* RODAPÉ */
 footer {
     background-color: #343a40;
     color: #f8f9fa;
     padding: 1.5rem 0;
     width: 100%;
-    /* Novas regras para alinhar e espaçar o conteúdo */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem; /* Cria um espaço entre a linha de copyright e o link */
 }
 
-/* Estilo para o link da Política de Privacidade no rodapé */
+/* link da Política de Privacidade no rodapé */
 footer a {
-    color: #adb5bd; /* Um cinza claro e suave, menos chamativo que o branco */
-    text-decoration: none; /* Remove o sublinhado padrão */
-    font-size: 0.9rem; /* Um pouco menor que o texto principal */
-    transition: all 0.2s ease-in-out; /* Transição suave para o efeito hover */
+    color: #adb5bd; 
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
 }
 
 /* Efeito ao passar o mouse por cima do link */
 footer a:hover {
-    color: #ffffff; /* Fica totalmente branco para dar destaque */
-    text-decoration: underline; /* Adiciona o sublinhado como feedback de clique */
+    color: #ffffff; 
+    text-decoration: underline; 
 }
 
-/* --- AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) --- */
+/* AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) */
 @media (max-width: 768px) {
     .logo {
         font-size: 1.2rem;
@@ -169,16 +168,16 @@ footer a:hover {
     }
 }
 
-/* --- NOVAS CLASSES DE COR PARA O RESULTADO --- */
+/* NOVAS CLASSES DE COR PARA O RESULTADO */
 .cor-sim {
-    border-color: #28a745; /* Verde para "Sim" */
+    border-color: #28a745;
 }
 
 .cor-nao {
-    border-color: #dc3545; /* Vermelho para "Não" */
+    border-color: #dc3545;
 }
 
-/* Você pode opcionalmente mudar a cor do texto também */
+/* cor do texto */
 .cor-sim #result-text {
     color: #28a745;
 }
@@ -187,7 +186,7 @@ footer a:hover {
     color: #dc3545;
 }
 
-/* --- ESTILOS PARA O SELETOR DE IDIOMAS --- */
+/* ESTILOS PARA O SELETOR DE IDIOMAS */
 .language-selector {
     position: relative; /* Necessário para posicionar o dropdown */
     display: inline-block;
@@ -240,7 +239,7 @@ footer a:hover {
     display: block;
 }
 
-/* --- ESTILOS PARA A SUB-NAVEGAÇÃO E MODOS --- */
+/* ESTILOS PARA A SUB-NAVEGAÇÃO E MODOS */
 .sub-nav {
     background-color: #e9ecef;
     padding: 0.75rem;
@@ -283,7 +282,7 @@ footer a:hover {
     
 }
 
-/* --- ESTILOS PARA O MODO NÚMERO ALEATÓRIO --- */
+/* ESTILOS PARA O MODO NÚMERO ALEATÓRIO */
 .gerador-container {
     display: flex;
     flex-direction: column;
@@ -340,12 +339,11 @@ footer a:hover {
 }
 
 #gerar-numero-btn {
-    /* Reutilizando o estilo do botão principal */
     padding: 1rem 2.5rem;
     font-size: 1.2rem;
     font-weight: 600;
     color: #fff;
-    background-color: #28a745; /* Verde para diferenciar a ação */
+    background-color: #28a745;
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -356,7 +354,7 @@ footer a:hover {
     background-color: #218838;
 }
 
-/* --- ESTILOS PARA O MODO SORTEADOR DE LISTA --- */
+/* ESTILOS PARA O MODO SORTEADOR DE LISTA */
 
 .sorteador-container {
     display: flex;
@@ -398,7 +396,7 @@ footer a:hover {
 
 #lista-input:focus {
     outline: none;
-    border-color: #007bff; /* Borda azul ao focar */
+    border-color: #007bff;
 }
 
 .resultado-sorteio {
@@ -423,7 +421,7 @@ footer a:hover {
     font-size: 1.2rem;
     font-weight: 600;
     color: #fff;
-    background-color: #6f42c1; /* Um roxo para diferenciar a ação */
+    background-color: #6f42c1;
     border: none;
     border-radius: 50px;
     cursor: pointer;

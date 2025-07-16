@@ -36,7 +36,7 @@ const translations = {
         pt: "Girar a Roda",
         en: "Spin the Wheel"
     },
-    // Chaves para as respostas do botão (adicionadas aqui para centralizar)
+    // Chaves para as respostas do botão
     answer_yes: {
         pt: "Sim",
         en: "Yes"

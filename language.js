@@ -64,8 +64,7 @@ const setLanguage = (lang) => {
 
     // --- INICIALIZAÇÃO ---
 
-    // Ao carregar a página, verifica se já existe um idioma salvo.
-    // Se não houver, usa 'pt' (Português) como padrão.
+    // Quando carregar a pagina, vai verificar se tem idioma salvo, se nao tiver usa pt
     const savedLang = localStorage.getItem('language') || 'pt';
     
     // Aplica a tradução com o idioma salvo ou o padrão.

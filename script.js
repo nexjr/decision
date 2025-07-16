@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- CONTROLE DE TROCA DE MODO ---
+    // CONTROLE DE TROCA DE MODO
     const modoBtns = document.querySelectorAll('.modo-btn');
     const modoContainers = document.querySelectorAll('.modo-container');
 
@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- MODO 1: LÓGICA DO SIM OU NÃO (LÓGICA CORRIGIDA) ---
+    // LÓGICA DO SIM OU NÃO
     const actionButton = document.getElementById('action-button');
     const resultCircle = document.querySelector('.result-circle');
     const resultText = document.getElementById('result-text');
     const possibleAnswers = ['Sim', 'Não'];
-    let rodaRotation = 0; // Mantém o estado da rotação
+    let rodaRotation = 0;
 
     if (actionButton) {
         actionButton.addEventListener('click', () => {
@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
             resultCircle.classList.remove('cor-sim', 'cor-nao');
             resultText.textContent = '';
             
-            // Aplica a mesma lógica da moeda: acumula a rotação
             rodaRotation += 360; 
             resultCircle.style.transform = `rotate(${rodaRotation}deg)`;
 
@@ -56,11 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const buttonText = translations.button_try_again[currentLang];
                 actionButton.textContent = buttonText;
                 actionButton.disabled = false;
-            }, 400); // Sincronizado com a transition de 0.4s do CSS
+            }, 400);
         });
     }
 
-    // --- MODO 2: LÓGICA DO NÚMERO ALEATÓRIO ---
+    // LÓGICA DO NÚMERO ALEATÓRIO
     const gerarNumeroBtn = document.getElementById('gerar-numero-btn');
     const minNumberInput = document.getElementById('min-number');
     const maxNumberInput = document.getElementById('max-number');
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- MODO 3: LÓGICA DO SORTEADOR DE LISTA ---
+    // LÓGICA DO SORTEADOR DE LISTA
     const sortearBtn = document.getElementById('sortear-btn');
     const listaInput = document.getElementById('lista-input');
     const listaResultado = document.getElementById('lista-resultado');
@@ -115,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- MODO 4: LÓGICA DO CARA OU COROA (Sua lógica, sem a declaração de 'translations') ---
+    // LÓGICA DO CARA OU COROA
     const flipButton = document.getElementById('flip-button');
     const coin = document.getElementById('coin');
     const coinFlipResult = document.getElementById('coin-flip-result');
