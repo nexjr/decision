@@ -46,6 +46,9 @@ nav ul li a {
     color: #555;
     font-weight: 600;
     transition: color 0.3s ease; /* Transição suave da cor ao passar o mouse */
+    position: relative;
+    top: 5px;
+
 }
 
 nav ul li a:hover {
@@ -139,18 +142,43 @@ footer a:hover {
     text-decoration: underline; 
 }
 
-/* AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) */
+footer p {
+    padding-left: 15px;
+}
+
+/* --- AJUSTES PARA TELAS MENORES (RESPONSIVIDADE) --- */
 @media (max-width: 768px) {
-    .logo {
-        font-size: 1.2rem;
-    }
     
-    nav ul {
+    /* BÔNUS: Melhoria para a navegação principal */
+    nav {
+        flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+        justify-content: center; /* Centraliza quando quebrar a linha */
         gap: 1rem;
     }
 
-    nav ul li a {
-        font-size: 0.9rem;
+    /* CORREÇÃO PRINCIPAL: Sub-navegação com os modos */
+    .sub-nav {
+        justify-content: flex-start; /* Alinha os botões à esquerda */
+        overflow-x: auto; /* Habilita a rolagem horizontal */
+        white-space: nowrap; /* Impede que os botões quebrem a linha */
+        -ms-overflow-style: none;  /* Esconde a barra de rolagem (IE/Edge) */
+        scrollbar-width: none;  /* Esconde a barra de rolagem (Firefox) */
+    }
+
+    /* Esconde a barra de rolagem (Chrome, Safari, etc.) */
+    .sub-nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Ajuste nos botões dos modos para telas menores */
+    .modo-btn {
+        padding: 0.5rem 1rem; /* Diminui um pouco o padding */
+        font-size: 0.85rem;
+    }
+
+    /* --- Regras antigas que mantivemos --- */
+    .logo {
+        font-size: 1.2rem;
     }
 
     .result-circle {
