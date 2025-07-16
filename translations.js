@@ -145,6 +145,10 @@ const translations = {
         pt: "Lançar Moeda!",
         en: "Flip Coin!"
     },
+    coin_flip_result_text: {
+        pt: "Resultado:",
+        en: "Result:"
+    },
 
     // Página de Privacidade 
     title_privacidade: {
