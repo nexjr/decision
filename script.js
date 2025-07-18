@@ -127,23 +127,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isFlipping) return;
             isFlipping = true;
             coinFlipResult.textContent = '\u00A0';
-
+        
             const result = Math.random() < 0.5 ? 'heads' : 'tails';
-            rotation += (result === 'heads') ? 1800 : 1980;
-
-            coin.style.transition = 'transform 1s cubic-bezier(0.45, 0.05, 0.55, 0.95)';
-            coin.style.transform = `rotateY(${rotation}deg)`;
-
+            const rotacaoFinal = (result === 'heads') ? 3600 : 3780; 
+        
+            coin.style.transition = 'none';
+            coin.style.transform = 'rotateY(0deg)';
+        
+            setTimeout(() => {
+                coin.style.transition = 'transform 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95)';
+                coin.style.transform = `rotateY(${rotacaoFinal}deg)`;
+            }, 20);
+        
             setTimeout(() => {
                 const currentLang = localStorage.getItem('language') || 'pt';
                 const translatedSide = (result === 'heads')
                     ? translations.coin_heads[currentLang]
                     : translations.coin_tails[currentLang];
                 const resultText = translations.coin_flip_result_text[currentLang];
-
+        
                 coinFlipResult.textContent = `${resultText} ${translatedSide}!`;
                 isFlipping = false;
-            }, 1000);
+            }, 1600);
         });
     }
 });
